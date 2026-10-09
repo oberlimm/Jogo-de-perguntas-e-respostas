@@ -10,7 +10,6 @@ RESOLUÇÃO DE PROBLEMA COM PARADIGMA IMPERATIVO USANDO O TEMA: Jogo de pergunta
 | Nome | GitHub |
 | --- | --- |
 | _João Oberlim Lira Martins_ | _@oberlimm_ |
-| --- | --- |
 | _Pedro Lucas da Silva Goulart_ | _@PedroGordoLucas_ |
 ## 🎥 Vídeo de demonstração
  
