@@ -1,5 +1,7 @@
 import random
- 
+import sys
+import time
+import os
 # ---------------------------------------------------------------------------
 # CONFIGURAÇÕES (valores fixos usados pelo programa)
 # ---------------------------------------------------------------------------
@@ -59,7 +61,19 @@ BANCO_PERGUNTAS = [
      "opcoes": ["input()", "print()", "open()", "range()"]},
 ]
  
- 
+def digitar(texto, atraso=0.03):
+    for letra in texto:
+        sys.stdout.write(letra)
+        sys.stdout.flush()
+        time.sleep(atraso)
+    print()
+
+VERDE = "\033[92m"
+VERMELHO = "\033[91m"
+RESET = "\033[0m"
+
+def limpar_tela():
+    os.system("cls" if os.name == "nt" else "clear")
 # ---------------------------------------------------------------------------
 # FUNÇÕES DE ESTADO E ENTRADA
 # ---------------------------------------------------------------------------
@@ -79,7 +93,7 @@ def pedir_nome():
     """Repete a leitura até o jogador digitar um nome não vazio."""
     nome = ""
     while nome == "":
-        nome = input("Digite seu nome: ").strip()
+        nome = input("Agente, identifique-se: ").strip()
         if nome == "":
             print("O nome não pode ficar vazio.")
     return nome
@@ -233,14 +247,25 @@ def jogar_partida(nome):
  
  
 def main():
-    print("=" * 50)
-    print("  QUIZ DE PERGUNTAS E RESPOSTAS")
-    print("=" * 50)
-    print("São " + str(TOTAL_RODADAS) + " rodadas com " + str(PERGUNTAS_POR_RODADA)
-          + " perguntas cada. Cada acerto vale " + str(PONTOS_POR_ACERTO) + " pontos.")
-    print("A partir de " + str(SEQUENCIA_MINIMA_BONUS) + " acertos seguidos, "
-          + "você ganha +" + str(BONUS_SEQUENCIA) + " por acerto.\n")
- 
+    os.system("")
+    limpar_tela()
+
+    print(VERDE)
+    digitar("Iniciando PyQuest-0N...", 0.05)
+    digitar("Sistema de memória: OFFILE", 0.04)
+    digitar("Identidade do agente: DESCONHECIDA", 0.04)
+    time.sleep(1)
+    digitar("Recuperando fragmentos...", 0.06)
+
+    digitar("=" * 50, 0.01)
+    digitar("  QUIZ DE PERGUNTAS E RESPOSTAS", 0.05)
+    digitar("=" * 50, 0.01)
+    digitar("São " + str(TOTAL_RODADAS) + " rodadas com " + str(PERGUNTAS_POR_RODADA)
+          + " perguntas cada. Cada acerto vale " + str(PONTOS_POR_ACERTO) + " pontos.", 0.05)
+    digitar("A partir de " + str(SEQUENCIA_MINIMA_BONUS) + " acertos seguidos, "
+          + "você ganha +" + str(BONUS_SEQUENCIA) + " por acerto.\n", 0.05)
+    print(RESET)
+
     nome = pedir_nome()
     recorde = 0
     jogando = True
