@@ -70,6 +70,8 @@ def digitar(texto, atraso=0.03):
 
 VERDE = "\033[92m"
 VERMELHO = "\033[91m"
+AMARELO = "\033[93m"
+CIANO = "\033[96m"
 RESET = "\033[0m"
 
 def limpar_tela():
@@ -95,7 +97,7 @@ def pedir_nome():
     while nome == "":
         nome = input("Agente, identifique-se: ").strip()
         if nome == "":
-            print("O nome não pode ficar vazio.")
+            print(VERMELHO + "O nome não pode ficar vazio." + RESET)
     return nome
  
  
@@ -107,7 +109,7 @@ def perguntar_sim_nao(texto):
             return True
         if resposta == "n":
             return False
-        print("Responda apenas com 's' ou 'n'.")
+        print(VERMELHO + "Responda apenas com 's' ou 'n'." + RESET)
  
  
 def ler_letra(quantidade_opcoes):
@@ -117,7 +119,7 @@ def ler_letra(quantidade_opcoes):
         entrada = input("Sua resposta: ").strip().lower()
         if len(entrada) == 1 and entrada in letras_validas:
             return letras_validas.index(entrada)
-        print("Resposta inválida. Digite uma letra entre a e " + letras_validas[-1] + ".")
+        print(VERMELHO + "Resposta inválida. Digite uma letra entre a e " + letras_validas[-1] + "." + RESET)
  
  
 # ---------------------------------------------------------------------------
@@ -158,9 +160,9 @@ def fazer_pergunta(numero, total, pergunta, estado):
     opcoes, indice_correto = preparar_opcoes(pergunta)
  
     print("\nPergunta " + str(numero) + " de " + str(total))
-    print(pergunta["pergunta"])
+    digitar(AMARELO + pergunta["pergunta"] + RESET)
     for i in range(len(opcoes)):
-        print("  " + LETRAS[i] + ") " + opcoes[i])
+        print("  " + LETRAS[i] + ") " + VERDE + opcoes[i] + RESET)
  
     escolhida = ler_letra(len(opcoes))
     acertou = (escolhida == indice_correto)
@@ -170,17 +172,17 @@ def fazer_pergunta(numero, total, pergunta, estado):
         mensagem = "Correto! +" + str(pontos) + " pontos"
         if estado["sequencia"] >= SEQUENCIA_MINIMA_BONUS:
             mensagem = mensagem + " (bônus de sequência: " + str(estado["sequencia"]) + " seguidas)"
-        print(mensagem)
+        print(VERDE + mensagem + RESET)
     else:
-        print("Errado. A resposta correta era: " + LETRAS[indice_correto] + ") " + opcoes[indice_correto])
+        print(VERMELHO + "Errado. A resposta correta era: " + LETRAS[indice_correto] + ") " + opcoes[indice_correto] + RESET)
     return acertou
  
  
 def jogar_rodada(numero_rodada, perguntas, estado):
     """Percorre as perguntas da rodada. Retorna a quantidade de acertos nela."""
-    print("\n" + "=" * 50)
-    print("RODADA " + str(numero_rodada) + " de " + str(TOTAL_RODADAS))
-    print("=" * 50)
+    print(VERDE + "\n" + "=" * 50 + RESET)
+    print(AMARELO + "RODADA " + str(numero_rodada) + " de " + str(TOTAL_RODADAS) + RESET)
+    print(VERDE + "=" * 50 + RESET)
  
     acertos_rodada = 0
     indice = 0
@@ -199,13 +201,13 @@ def jogar_rodada(numero_rodada, perguntas, estado):
 def classificar(percentual):
     """Devolve uma classificação em texto conforme o percentual de acertos."""
     if percentual >= 90:
-        return "Excelente!"
+        return (CIANO + "Excelente!" + RESET)
     elif percentual >= 70:
-        return "Muito bom!"
+        return (VERDE + "Muito bom!" + RESET)
     elif percentual >= 50:
-        return "Bom, mas dá para melhorar."
+        return (AMARELO + "Bom, mas dá para melhorar." + RESET)
     else:
-        return "Continue estudando!"
+        return (VERMELHO + "Continue estudando!" + RESET)
  
  
 def mostrar_resultado_final(nome, estado):
@@ -213,13 +215,13 @@ def mostrar_resultado_final(nome, estado):
     total_perguntas = PERGUNTAS_POR_RODADA * TOTAL_RODADAS
     percentual = estado["acertos"] * 100 / total_perguntas
  
-    print("\n" + "=" * 50)
-    print("RESULTADO FINAL - " + nome)
-    print("=" * 50)
-    print("Acertos: " + str(estado["acertos"]) + "/" + str(total_perguntas)
+    print(VERDE + "\n" + "=" * 50 + RESET)
+    print(AMARELO + "          RESULTADO FINAL - " + RESET + CIANO + nome + RESET)
+    print(VERDE + "=" * 50 + RESET)
+    print("Acertos: " + VERDE + str(estado["acertos"]) + "/" + str(total_perguntas) + RESET
           + " (" + str(round(percentual, 1)) + "%)")
-    print("Erros: " + str(estado["erros"]))
-    print("Maior sequência de acertos: " + str(estado["melhor_sequencia"]))
+    print("Erros: " + VERMELHO + str(estado["erros"]) + RESET)
+    print("Maior sequência de acertos: " + CIANO + str(estado["melhor_sequencia"]) + RESET)
     print("Pontuação final: " + str(estado["pontuacao"]))
     print("Classificação: " + classificar(percentual))
  
@@ -249,22 +251,13 @@ def jogar_partida(nome):
 def main():
     os.system("")
     limpar_tela()
-
-    print(VERDE)
-    digitar("Iniciando PyQuest-0N...", 0.05)
-    digitar("Sistema de memória: OFFILE", 0.04)
-    digitar("Identidade do agente: DESCONHECIDA", 0.04)
-    time.sleep(1)
-    digitar("Recuperando fragmentos...", 0.06)
-
-    digitar("=" * 50, 0.01)
-    digitar("  QUIZ DE PERGUNTAS E RESPOSTAS", 0.05)
-    digitar("=" * 50, 0.01)
-    digitar("São " + str(TOTAL_RODADAS) + " rodadas com " + str(PERGUNTAS_POR_RODADA)
-          + " perguntas cada. Cada acerto vale " + str(PONTOS_POR_ACERTO) + " pontos.", 0.05)
-    digitar("A partir de " + str(SEQUENCIA_MINIMA_BONUS) + " acertos seguidos, "
-          + "você ganha +" + str(BONUS_SEQUENCIA) + " por acerto.\n", 0.05)
-    print(RESET)
+    digitar(VERDE + "=" * 50 + RESET, 0.01)
+    digitar(AMARELO + "         QUIZ DE PERGUNTAS E RESPOSTAS" + RESET, 0.03)
+    digitar(VERDE + "=" * 50 + RESET, 0.01)
+    digitar(AMARELO + "São " + str(TOTAL_RODADAS) + " rodadas com " + str(PERGUNTAS_POR_RODADA)
+          + " perguntas cada. Cada acerto vale " + str(PONTOS_POR_ACERTO) + " pontos." + RESET, 0.03)
+    digitar(AMARELO + "A partir de " + str(SEQUENCIA_MINIMA_BONUS) + " acertos seguidos, "
+          + "você ganha +" + str(BONUS_SEQUENCIA) + " por acerto.\n" + RESET, 0.03)
 
     nome = pedir_nome()
     recorde = 0
@@ -281,7 +274,7 @@ def main():
  
         jogando = perguntar_sim_nao("\nDeseja jogar novamente?")
  
-    print("\nObrigado por jogar, " + nome + "!")
+    print(VERDE + "\nObrigado por jogar, " + nome + "!" + RESET)
  
  
 if __name__ == "__main__":
