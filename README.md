@@ -20,6 +20,28 @@ _Cole aqui o link do vídeo (ou insira o arquivo no repositório)._
 ## 1. Descrição do problema
  
 Criamos um **jogo de perguntas e respostas (quiz)** executado no terminal, com pontuação, controle de rodadas e apresentação do resultado final.
+Plaintext
+
+## Fluxo do Jogo
+
+```text
+INÍCIO
+  │  pontos = 0, rodada = 1          ← estado inicial
+  ▼
+┌─► Ainda há perguntas? ──não──► mostrar resultado final → FIM
+│        │ sim
+│        ▼
+│   mostrar pergunta + opções
+│        ▼
+│   ler resposta do jogador          ← ENTRADA
+│        ▼
+│   resposta == correta? ──sim──► pontos += 1
+│        │ não                   (estado muda)
+│        ▼
+│   dar feedback
+│        ▼
+└── rodada += 1
+```
  
 **Entradas**
 - Nome do jogador.
@@ -109,6 +131,9 @@ Uma partida perfeita (15 acertos) rende 10×15 + 5×13 = **215 pontos**.
 ├── quiz.py     # código-fonte completo
 └── README.md   # este arquivo
 ```
+
+
+
 
 
 
