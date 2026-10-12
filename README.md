@@ -13,10 +13,8 @@ RESOLUÇÃO DE PROBLEMA COM PARADIGMA IMPERATIVO USANDO O TEMA: Jogo de pergunta
 | _Pedro Lucas da Silva Goulart_ | _@PedroGordoLucas_ |
 | _Germano Pedro Minami Rodrigues_ | _@germano004_ |
 ## 🎥 Vídeo de demonstração
- 
-_Cole aqui o link do vídeo (ou insira o arquivo no repositório)._
- 
----Depois a gente coloca
+
+https://github.com/user-attachments/assets/9c1a3167-1fce-4e6b-a60c-0147dd5ac742
 
 ## 1. Descrição do problema
  
