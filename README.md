@@ -154,7 +154,7 @@ Uma partida perfeita (15 acertos) rende 10×15 + 5×13 = **215 pontos**.
 | --- | --- |
 |_João Oberlim Lira Martins_|Fazer a estrutura do Quiz, Melhoria do Codigo |
 | _Pedro Lucas da Silva Goulart_ |Contribuição com ajuste do Codigo , Criação do Video |
-| _Germano Pedro Minami Rodrigues_ |Adicionar Perguntas , Deicou o Codigo mas clean(limpo)|
+| _Germano Pedro Minami Rodrigues_ |Adicionar Perguntas , Deixou o Codigo mas clean(limpo)|
 
 
 ## 6. Estrutura do repositório
