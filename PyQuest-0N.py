@@ -68,11 +68,12 @@ def digitar(texto, atraso=0.03):
         time.sleep(atraso)
     print()
 
-VERDE = "\033[92m"
-VERMELHO = "\033[91m"
-AMARELO = "\033[93m"
-CIANO = "\033[96m"
-RESET = "\033[0m"
+VERDE       = "\033[92m"
+VERMELHO    = "\033[91m"
+AMARELO     = "\033[93m"
+CIANO       = "\033[96m"
+AZUL        = "\033[94m"
+RESET       = "\033[0m"
 
 def limpar_tela():
     os.system("cls" if os.name == "nt" else "clear")
@@ -222,7 +223,7 @@ def mostrar_resultado_final(nome, estado):
           + " (" + str(round(percentual, 1)) + "%)")
     print("Erros: " + VERMELHO + str(estado["erros"]) + RESET)
     print("Maior sequência de acertos: " + CIANO + str(estado["melhor_sequencia"]) + RESET)
-    print("Pontuação final: " + str(estado["pontuacao"]))
+    print("Pontuação final: " + AZUL + str(estado["pontuacao"]) + RESET)
     print("Classificação: " + classificar(percentual))
  
  
@@ -268,7 +269,7 @@ def main():
  
         if pontuacao > recorde:
             recorde = pontuacao
-            print("Novo recorde da sessão: " + str(recorde) + " pontos!")
+            print("Novo recorde da sessão: " + VERDE + str(recorde) + " pontos!" + RESET)
         else:
             print("Recorde da sessão: " + str(recorde) + " pontos.")
  
