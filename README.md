@@ -69,31 +69,24 @@ INÍCIO
 - O jogo tem **3 rodadas** com **5 perguntas** cada (15 no total), sorteadas de um banco de 50 perguntas, sem repetição na mesma partida.
 - Cada pergunta tem 4 opções, embaralhadas a cada exibição.
 - Cada acerto vale **10 pontos**. A partir de **3 acertos seguidos**, cada acerto ganha **+5 de bônus**. Errar zera a sequência.
-- Respostas inválidas são rejeitadas e a leitura é repetida.
-
- **Resultados esperados**
-- O jogo tem 3 rodadas com 5 perguntas cada (15 no total), sorteadas de um banco de 50 perguntas, sem repetição na mesma partida.
-- Cada pergunta tem 4 opções, embaralhadas a cada exibição.
-- Cada acerto vale 10 pontos. A partir de 3 acertos seguidos, cada acerto ganha +5 de bônus. Errar zera a sequência.
 - Respostas inválidas (nome vazio, letra fora de a–d, resposta diferente de s/n) são rejeitadas e a leitura é repetida.
 
 **Resultados esperados**
--Feedback imediato após cada resposta (acertou/errou e qual era a correta).
--Resumo ao fim de cada rodada (acertos da rodada e pontuação atual).
--Resultado final: acertos, erros, percentual, maior sequência de acertos, pontuação e classificação.
--Recorde da sessão quando o jogador joga mais de uma partida.
+- Feedback imediato após cada resposta (acertou/errou e qual era a correta).
+- Resumo ao fim de cada rodada (acertos da rodada e pontuação atual).
+- Resultado final: acertos, erros, percentual, maior sequência de acertos, pontuação e classificação.
+- Recorde da sessão quando o jogador joga mais de uma partida.
 
 ## 2. Como executar
  
-**Requisitos:** 
--Python 3.8 ou superior. 
--Nenhuma biblioteca externa: o programa usa apenas módulos da biblioteca padrão (random, sys, time e os).
--Um terminal com suporte a cores ANSI (Windows 10 ou superior, Linux e macOS já suportam).
+**Requisitos:**
+- Python 3.8 ou superior.
+- Nenhuma biblioteca externa: o programa usa apenas módulos da biblioteca padrão (`random`, `sys`, `time` e `os`).
+- Um terminal com suporte a cores ANSI (Windows 10 ou superior, Linux e macOS já suportam).
 
- 
 ```bash
-git clone <link-do-repositorio>
-cd <pasta-do-repositorio>
+git clone https://github.com/oberlimm/Jogo-de-perguntas-e-respostas.git
+cd Jogo-de-perguntas-e-respostas
 python PyQuest-0N.py        # no Linux/macOS pode ser python3 PyQuest-0N.py
 ```
  
@@ -109,7 +102,7 @@ O programa é organizado como uma **sequência de instruções** que altera o **
 | --- | --- | --- |
 | **Sequência de instruções** | `main()`, `jogar_partida()`, `fazer_pergunta()` | Os comandos executam em ordem: exibir pergunta → ler resposta → verificar → atualizar pontos → mostrar feedback. |
 | **Variáveis e atribuições (estado)** | `criar_estado()` e `atualizar_estado()` | O dicionário `estado` guarda `pontuacao`, `acertos`, `erros`, `sequencia` e `melhor_sequencia`. A cada resposta, ele é alterado por atribuições, como `estado["acertos"] = estado["acertos"] + 1`. |
-| **Decisões (`if / elif / else`)** | `atualizar_estado()`, `classificar()`, `fazer_pergunta()` | Decide se houve acerto, se vale bônus, se bate o recorde e qual classificação o jogador recebe. |
+| **Decisões (`if / elif / else`)** | `atualizar_estado()`, `classificar()`, `fazer_pergunta()`, `main()` | Decide se houve acerto, se vale bônus, qual classificação o jogador recebe e se bateu o recorde (em `main()`). |
 | **Repetição com `while`** | `pedir_nome()`, `ler_letra()`, `perguntar_sim_nao()`, `jogar_rodada()`, `main()` | Repete a leitura até a entrada ser válida; percorre as perguntas da rodada; mantém o jogo rodando enquanto o jogador quiser. |
 | **Repetição com `for`** | `jogar_partida()`, `fazer_pergunta()` | Percorre as rodadas e imprime as opções de resposta. |
 | **Funções / procedimentos** | Todo o arquivo | Dividem o problema em partes pequenas, cada uma com uma responsabilidade. |
@@ -134,13 +127,15 @@ Uma partida perfeita (15 acertos) rende 10×15 + 5×13 = **215 pontos**.
 - **`random.sample`:** garante que nenhuma pergunta se repete dentro da mesma partida.
 - **Constantes no topo do arquivo:** mudar o número de rodadas, perguntas ou pontos exige alterar apenas um valor.
 
-  ***Interface no terminal , Além da lógica do jogo, a versão final conta com recursos visuais que não alteram as regras:
-  -Cores ANSI para destacar acertos (verde), erros (vermelho), perguntas (amarelo) e resultados (ciano/azul).
-  -Efeito de digitação na função digitar(), que exibe os textos caractere por caractere.
-  -Limpeza de tela na função limpar_tela(), que usa cls no Windows e clear nos demais sistemas.
+### Interface no terminal
+
+Além da lógica do jogo, a versão final conta com recursos visuais que não alteram as regras:
+- Cores ANSI para destacar acertos (verde), erros (vermelho), perguntas (amarelo) e resultados (ciano/azul).
+- Efeito de digitação na função `digitar()`, que exibe os textos caractere por caractere.
+- Limpeza de tela na função `limpar_tela()`, que usa `cls` no Windows e `clear` nos demais sistemas.
   
 
-- ## 4. Reflexão sobre o desenvolvimento
+## 4. Reflexão sobre o desenvolvimento
  
 **Principais decisões:** usar apenas a biblioteca padrão; separar o programa em funções pequenas; centralizar o estado da partida em um único dicionário; validar toda entrada do usuário com laços while; começar por uma versão simples no terminal (rascunho) e só depois adicionar cores e efeito de digitação.
  
