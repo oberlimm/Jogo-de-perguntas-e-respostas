@@ -66,13 +66,13 @@ INÍCIO
 - Enter para avançar entre as rodadas.
 
 **Regras principais**
-- O jogo tem **3 rodadas** com **5 perguntas** cada (15 no total), sorteadas de um banco de 20 perguntas, sem repetição na mesma partida.
+- O jogo tem **3 rodadas** com **5 perguntas** cada (15 no total), sorteadas de um banco de 50 perguntas, sem repetição na mesma partida.
 - Cada pergunta tem 4 opções, embaralhadas a cada exibição.
 - Cada acerto vale **10 pontos**. A partir de **3 acertos seguidos**, cada acerto ganha **+5 de bônus**. Errar zera a sequência.
 - Respostas inválidas são rejeitadas e a leitura é repetida.
 
  **Resultados esperados**
-- O jogo tem 3 rodadas com 5 perguntas cada (15 no total), sorteadas de um banco de 20 perguntas, sem repetição na mesma partida.
+- O jogo tem 3 rodadas com 5 perguntas cada (15 no total), sorteadas de um banco de 50 perguntas, sem repetição na mesma partida.
 - Cada pergunta tem 4 opções, embaralhadas a cada exibição.
 - Cada acerto vale 10 pontos. A partir de 3 acertos seguidos, cada acerto ganha +5 de bônus. Errar zera a sequência.
 - Respostas inválidas (nome vazio, letra fora de a–d, resposta diferente de s/n) são rejeitadas e a leitura é repetida.
