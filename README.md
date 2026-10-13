@@ -147,9 +147,9 @@ Além da lógica do jogo, a versão final conta com recursos visuais que não al
  
 | Integrante | Contribuição |
 | --- | --- |
-|_João Oberlim Lira Martins_|Fazer a estrutura do Quiz, Melhoria do Codigo |
-| _Pedro Lucas da Silva Goulart_ |Contribuição com ajuste do Codigo , Criação do Video |
-| _Germano Pedro Minami Rodrigues_ |Adicionar Perguntas , Deixou o Codigo mais clean(limpo)|
+|_João Oberlim Lira Martins_|Fazer a estrutura do Quiz, Melhoria do Código |
+| _Pedro Lucas da Silva Goulart_ |Contribuição com ajuste do Código , Criação do Vídeo |
+| _Germano Pedro Minami Rodrigues_ |Adicionar Perguntas , Deixou o Código mais clean(limpo)|
 
 
 ## 6. Estrutura do repositório
@@ -157,7 +157,8 @@ Além da lógica do jogo, a versão final conta com recursos visuais que não al
 ```
 .
 ├── PyQuest-0N.py   # código-fonte completo
-└── README.md       # este arquivo
+├── README.md       # este arquivo
+└── rascunhos/      # versões iniciais do quiz (histórico do desenvolvimento)
 ```
 
 
